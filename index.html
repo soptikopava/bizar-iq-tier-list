@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bizár IQ Tier List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">IQ</span><div><h1>Bizár metr</h1><p>Vědecky naprosto neověřený tier list</p></div></div>
+    <div class="actions">
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Najít influencera…" /></label>
+      <button id="compactBtn" class="ghost">Režim streamu</button>
+      <button id="resetBtn" class="danger">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pool-wrap">
+      <div class="section-title"><div><span class="eyebrow">ČEKAJÍ NA VERDIKT</span><h2>Influenceři</h2></div><span id="poolCount" class="counter"></span></div>
+      <div id="pool" class="pool dropzone" data-iq="pool"></div>
+    </section>
+
+    <section class="board-wrap">
+      <div class="axis-note"><span>↑ VYŠŠÍ KOGNITIVNÍ VÝKON</span><span>PROSTOR PRO EXEMPLÁŘE →</span></div>
+      <div class="board-head"><div>IQ</div><div>VĚDECKÁ KATEGORIE*</div><div>UMÍSTĚNÍ</div></div>
+      <div id="board" class="board"></div>
+      <p class="disclaimer">* Kategorie jsou satirické. Nejde o skutečné měření inteligence ani odborné hodnocení konkrétních osob.</p>
+    </section>
+  </main>
+
+  <dialog id="photoDialog">
+    <form method="dialog" class="dialog-card">
+      <button class="close" value="cancel" aria-label="Zavřít">×</button>
+      <div id="dialogAvatar" class="dialog-avatar"></div>
+      <h3 id="dialogName"></h3>
+      <p>Přidej portrét z počítače. Fotka zůstane jen v tomto prohlížeči.</p>
+      <label class="upload">Vybrat fotografii<input id="photoInput" type="file" accept="image/*" /></label>
+      <button id="removePhoto" type="button" class="ghost">Odstranit fotografii</button>
+    </form>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
