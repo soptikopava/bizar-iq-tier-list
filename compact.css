@@ -1,10 +1,10 @@
 /* Pravý zásobník a maximálně využitá plocha pro stupnici na 1920 × 1080. */
-:root { --row-h: clamp(45px, calc((100vh - 130px) / 17), 58px); }
+:root { --row-h: clamp(48px, calc((100vh - 78px) / 17), 60px); }
 body { min-width: 1100px; overflow: hidden; }
 .topbar { height: 58px; padding: 0 22px; }
 .brand { gap: 10px; }
 .brand-mark { width: 38px; height: 38px; font-size: 17px; box-shadow: 3px 3px 0 #596b19; }
-.brand h1 { font-size: 18px; }
+.brand h1 { font-size: 18px; white-space: nowrap; }
 .brand p { font-size: 9px; }
 .search, .ghost, .danger { height: 34px; }
 .ghost, .danger { padding: 7px 11px; font-size: 12px; }
@@ -38,15 +38,13 @@ main {
   overflow-y: auto;
   border-radius: 8px;
 }
-.pool .card { width: 100%; height: 39px; flex: 0 0 39px; display: grid; grid-template-columns: 39px minmax(0, 1fr); border-radius: 5px; box-shadow: none; }
-.pool .portrait { height: 38px; }
-.pool .card-name { height: 38px; padding: 0 7px; display: flex; justify-content: flex-start; font-size: 9px; text-align: left; }
+.pool .card { width: 100%; height: 76px; flex: 0 0 76px; display: grid; grid-template-columns: 76px minmax(0, 1fr); border-radius: 7px; box-shadow: none; }
+.pool .portrait { height: 75px; }
+.pool .card-name { height: 75px; padding: 0 10px; display: flex; justify-content: flex-start; font-size: 12px; text-align: left; }
 
-.axis-note { height: 18px; margin: 0; padding: 0 0 4px; grid-template-columns: 342px 1fr; font-size: 8px; }
+.axis-note, .board-head { display: none; }
 .board { overflow: hidden; }
-.board-head { height: 24px; font-size: 8px; }
-.board-head > div { padding: 7px 10px; }
-.tier, .board-head { grid-template-columns: 72px 270px minmax(430px, 1fr); }
+.tier { grid-template-columns: 72px 560px minmax(320px, 1fr); }
 .tier { height: var(--row-h); min-height: var(--row-h); }
 .iq-number { font-size: 22px; }
 .iq-number small { font-size: 8px; }
@@ -57,10 +55,12 @@ main {
 .tier { box-shadow: inset 3px 0 0 var(--tier); }
 .desc { padding: 3px 10px; overflow: hidden; }
 .desc h3 { margin: 0 0 2px; font-size: 11px; white-space: nowrap; }
-.desc p { margin: 0; font-size: 8.5px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.desc p { margin: 0; font-size: 8.5px; line-height: 1.2; white-space: normal; overflow: visible; }
 .tier-zone { height: var(--row-h); min-height: var(--row-h); padding: 3px 5px; gap: 4px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
-.tier-zone .card { width: 58px; height: calc(var(--row-h) - 6px); flex: 0 0 58px; border-radius: 5px; box-shadow: none; }
+.tier-zone .card { width: 104px; height: calc(var(--row-h) - 6px); flex: 0 0 104px; border-radius: 6px; box-shadow: none; display: grid; grid-template-columns: calc(var(--row-h) - 7px) minmax(0, 1fr); }
 .tier-zone .portrait { height: calc(var(--row-h) - 21px); min-height: 25px; }
+.tier-zone .portrait { height: calc(var(--row-h) - 7px); }
+.tier-zone .card-name { height: calc(var(--row-h) - 7px); min-height: 0; padding: 0 4px; display: flex; font-size: 7px; white-space: normal; }
 .card-name { min-height: 14px; height: 14px; padding: 1px 2px; font-size: 7px; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
 .initials { font-size: 15px; }
 .photo-btn { width: 17px; height: 17px; right: 2px; top: 2px; font-size: 10px; }
