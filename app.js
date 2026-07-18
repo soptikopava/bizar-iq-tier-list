@@ -8,7 +8,7 @@ const tiers = [
   [100,"Člověk standardní","Umí přečíst návod, porovnat dvě informace a připustit možnost omylu. Poslední schopnost na internetu běžně deaktivuje."],
   [90,"Papoušek motivační","Umí zopakovat několik cizích mouder. Pořadí slov se občas změní a vznikne věta, podle které je chudoba otázkou špatných vibrací."],
   [80,"Straka nákupní","Dokáže rozlišit třpytky, kamínky a plastové zlato na vzdálenost padesáti metrů. Cenovku objeví až bankovní aplikace."],
-  [70,"Kuchařka žáruvzdorná","Dokáže připravit jídlo podle receptu. Pokrm obvykle spálí, ale správným filtrem z něj vytvoří „rustikální domácí variantu“."],
+  [70,"Mistr uhelné gastronomie","Dokáže připravit jídlo podle receptu. Pokrm obvykle spálí, ale správným filtrem z něj vytvoří „rustikální domácí variantu“."],
   [60,"Křeček produktivní","Celý den běhá, natáčí, stříhá a plánuje. Večer zjistí, že vytvořil čtyři minuty obsahu o tom, že dnes nestíhal."],
   [50,"Holub diskusní","Vstoupí do debaty, shodí figurky, zanechá po sobě nepořádek a odejde s pocitem vítězství."],
   [40,"Zlatá rybka omluvná","Každé tři týdny natočí stejné vysvětlení a pokaždé je přesvědčena, že se situace stala poprvé."],
@@ -21,14 +21,15 @@ const people = [
   ["adela","Adéla Pulcová","Shopaholicadel"],["terka","Tereza Šulganová","Život Terky"],["kaluba","Matouš Kaluba",""],["gangstaboy","Tadeáš Veselý","Gangstaboy"],["lauberova","Nikola Lauberová",""],["bejr","Aleš Bejr","Psychopat"],["samir","Samir Margina",""],["gelnarova","Hana Gelnarová",""],["laduska","Lada Kašparová Horová","Laduška"],["kubenka","Tadeáš Kuběnka",""],["sugar","Denisa Kouřilková","Sugar Denny"],["datel","Marek Valášek","Datel"],["kajumi","Adam Kajumi",""],["grznar","Filip Grznár",""],["mike","Mike Oganesjan","Detektiv Mike"],["tary","Taras Povoroznyk","Tary"],["freescoot","Jakub Smrek","Freescoot"],["speaker","Jakub Jíra","Speaker"],["alagia","Dominique Alagia",""],["kamen","Ondřej Untermüller","Kluk s kamením"],["polackova","Eva Poláčková",""],["jeptiska","Jeptiška naruby","TikTok"]
 ].map(([id,name,alias],i)=>({id,name,alias,color:`hsl(${(i*47)%360} 68% 48%)`,color2:`hsl(${(i*47+65)%360} 63% 28%)`}));
 const defaultPhotos = new Set(["adela","terka","kaluba","gangstaboy","lauberova","bejr","samir","gelnarova","laduska","kubenka","sugar","datel","kajumi","grznar","mike","tary","freescoot","speaker","alagia","kamen","polackova"]);
-const photoFor = id => state.photos[id] || (defaultPhotos.has(id) ? `assets/portraits/${id}.img` : "");
+const pngPhotos = new Set(["bejr","gangstaboy","samir"]);
+const photoFor = id => state.photos[id] || (defaultPhotos.has(id) ? `assets/portraits/${id}.${pngPhotos.has(id)?"png":"jpg"}` : "");
 
 const KEY="bizar-iq-tier-v1"; let state=JSON.parse(localStorage.getItem(KEY)||"null")||{placements:{},photos:{}}; let activeId=null;
 const board=document.querySelector("#board"),pool=document.querySelector("#pool"),search=document.querySelector("#search");
 const esc=s=>s.replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function initials(p){return p.name.split(" ").map(x=>x[0]).slice(0,2).join("")}
 function hue(iq){return `hsl(${Math.round(iq/160*125)} 82% 55%)`}
-function buildBoard(){board.innerHTML=tiers.map(([iq,title,text])=>`<article class="tier"><div class="iq-cell" style="--tier:${hue(iq)}"><div class="iq-number"><small>IQ</small>${iq}</div></div><div class="desc"><h3>${title}</h3><p>${text}</p></div><div class="tier-zone dropzone" data-iq="${iq}"></div></article>`).join("")}
+function buildBoard(){board.innerHTML=tiers.map(([iq,title,text])=>`<article class="tier"><div class="iq-cell" style="--tier:${hue(iq)}"><div class="iq-number"><small>IQ</small>${iq}</div></div><div class="desc" title="${esc(text)}"><h3>${title}</h3><p>${text}</p></div><div class="tier-zone dropzone" data-iq="${iq}"></div></article>`).join("")}
 function card(p){const photo=photoFor(p.id);return `<div class="card" draggable="true" data-id="${p.id}" title="Přetáhni do zvoleného IQ"><div class="portrait" style="--c1:${p.color};--c2:${p.color2};${photo?`background-image:url('${photo}')`:""}"><span class="initials" ${photo?'style="display:none"':""}>${initials(p)}</span><button class="photo-btn" aria-label="Změnit fotografii" title="Změnit fotografii">✎</button></div><div class="card-name">${esc(p.alias||p.name)}</div></div>`}
 function render(){document.querySelectorAll(".tier-zone").forEach(z=>z.innerHTML="");pool.innerHTML="";let visible=0;const q=search.value.trim().toLocaleLowerCase("cs");people.forEach(p=>{if(q&&!`${p.name} ${p.alias}`.toLocaleLowerCase("cs").includes(q))return;visible++;const target=state.placements[p.id];(target===undefined?pool:document.querySelector(`.tier-zone[data-iq="${target}"]`))?.insertAdjacentHTML("beforeend",card(p))});const unplaced=people.filter(p=>state.placements[p.id]===undefined).length;document.querySelector("#poolCount").textContent=`${unplaced} z ${people.length} neumístěno`;if(!pool.children.length)pool.innerHTML=`<span class="empty">${q?"Hledání nemá výsledek":"Všichni už dostali svůj verdikt."}</span>`;bindCards()}
 function save(){localStorage.setItem(KEY,JSON.stringify(state))} function toast(t){const el=document.querySelector("#toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1700)}

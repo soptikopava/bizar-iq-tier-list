@@ -7,6 +7,7 @@ Otevřete `index.html` v prohlížeči. Aplikace nepotřebuje instalaci ani inte
 - Umístění i fotografie se ukládají automaticky do prohlížeče.
 - Tlačítko **Režim streamu** (nebo klávesa `S`) skryje ovládací panel a zásobník.
 - **Reset** vrátí všechny karty do zásobníku, ale ponechá fotografie.
+- Výška všech 17 úrovní se automaticky přizpůsobí tak, aby se tier list vešel na jednu streamovou obrazovku; úplný satirický popis se ukáže po najetí myší.
 
 Poznámka: Texty jsou satirické; aplikace výslovně neprezentuje pořadí jako skutečné měření inteligence.
 
