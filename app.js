@@ -16,7 +16,7 @@ const tiers = [
   [20,"Medúza trendová","Nemá centralizovaný mozek, ale bezpečně pozná, kterým směrem právě pluje dav."],
   [10,"Pokojová rostlina","Otáčí se za světlem. Internetový poddruh výhradně za kruhovým světlem a sponzorskou smlouvou."],
   [0,"Kámen základní","Nemá nervovou soustavu. Přesto dokáže být argumentačně pevnější než některá reakční videa."]
-].reverse();
+];
 const people = [
   ["adela","Adéla Pulcová","Shopaholicadel"],["terka","Tereza Šulganová","Život Terky"],["kaluba","Matouš Kaluba",""],["gangstaboy","Tadeáš Veselý","Gangstaboy"],["lauberova","Nikola Lauberová",""],["bejr","Aleš Bejr","Psychopat"],["samir","Samir Margina",""],["gelnarova","Hana Gelnarová",""],["laduska","Lada Kašparová Horová","Laduška"],["kubenka","Tadeáš Kuběnka",""],["sugar","Denisa Kouřilková","Sugar Denny"],["datel","Marek Valášek","Datel"],["kajumi","Adam Kajumi",""],["grznar","Filip Grznár",""],["mike","Mike Oganesjan","Detektiv Mike"],["tary","Taras Povoroznyk","Tary"],["freescoot","Jakub Smrek","Freescoot"],["speaker","Jakub Jíra","Speaker"],["alagia","Dominique Alagia",""],["kamen","Ondřej Untermüller","Kluk s kamením"],["polackova","Eva Poláčková",""],["jeptiska","Jeptiška naruby","TikTok"]
 ].map(([id,name,alias],i)=>({id,name,alias,color:`hsl(${(i*47)%360} 68% 48%)`,color2:`hsl(${(i*47+65)%360} 63% 28%)`}));
