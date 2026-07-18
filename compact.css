@@ -1,6 +1,6 @@
-/* Celých 17 úrovní se přizpůsobí výšce jedné streamové obrazovky. */
-:root { --row-h: clamp(36px, calc((100vh - 242px) / 17), 50px); }
-body { min-width: 1100px; overflow-y: hidden; }
+/* Pravý zásobník a maximálně využitá plocha pro stupnici na 1920 × 1080. */
+:root { --row-h: clamp(45px, calc((100vh - 130px) / 17), 58px); }
+body { min-width: 1100px; overflow: hidden; }
 .topbar { height: 58px; padding: 0 22px; }
 .brand { gap: 10px; }
 .brand-mark { width: 38px; height: 38px; font-size: 17px; box-shadow: 3px 3px 0 #596b19; }
@@ -8,30 +8,59 @@ body { min-width: 1100px; overflow-y: hidden; }
 .brand p { font-size: 9px; }
 .search, .ghost, .danger { height: 34px; }
 .ghost, .danger { padding: 7px 11px; font-size: 12px; }
-main { padding: 10px 22px 4px; }
-.section-title { margin-bottom: 5px; }
-.section-title h2 { font-size: 17px; }
-.eyebrow { font-size: 8px; }
-.counter { font-size: 10px; }
-.pool { min-height: 60px; height: 60px; gap: 5px; padding: 5px 7px; border-radius: 8px; overflow-y: hidden; }
-.axis-note { margin-top: 7px; padding-bottom: 4px; height: 18px; font-size: 8px; }
+
+main {
+  max-width: 1920px;
+  height: calc(100vh - 58px);
+  margin: 0 auto;
+  padding: 7px 12px 3px;
+  display: grid;
+  grid-template-columns: minmax(780px, 1fr) 238px;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 10px;
+}
+.board-wrap { grid-column: 1; grid-row: 1; width: 100%; min-width: 0; margin: 0; }
+.pool-wrap { grid-column: 2; grid-row: 1; width: 100%; min-width: 0; margin: 0; display: flex; flex-direction: column; }
+.section-title { min-height: 41px; margin: 0 0 5px; align-items: flex-end; }
+.section-title h2 { margin-top: 1px; font-size: 17px; }
+.eyebrow { font-size: 7px; letter-spacing: .11em; }
+.counter { font-size: 9px; max-width: 78px; text-align: right; }
+.pool {
+  min-height: 0;
+  height: auto;
+  flex: 1;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+.pool .card { width: 100%; height: 39px; flex: 0 0 39px; display: grid; grid-template-columns: 39px minmax(0, 1fr); border-radius: 5px; box-shadow: none; }
+.pool .portrait { height: 38px; }
+.pool .card-name { height: 38px; padding: 0 7px; display: flex; justify-content: flex-start; font-size: 9px; text-align: left; }
+
+.axis-note { height: 18px; margin: 0; padding: 0 0 4px; grid-template-columns: 342px 1fr; font-size: 8px; }
 .board { overflow: hidden; }
 .board-head { height: 24px; font-size: 8px; }
 .board-head > div { padding: 7px 10px; }
-.tier, .board-head { grid-template-columns: 72px 250px minmax(500px, 1fr); }
+.tier, .board-head { grid-template-columns: 72px 270px minmax(430px, 1fr); }
 .tier { height: var(--row-h); min-height: var(--row-h); }
-.iq-number { font-size: 20px; }
+.iq-number { font-size: 22px; }
 .iq-number small { font-size: 8px; }
 .desc { padding: 3px 10px; overflow: hidden; }
-.desc h3 { margin: 0 0 1px; font-size: 11px; white-space: nowrap; }
-.desc p { font-size: 8px; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tier-zone { height: var(--row-h); min-height: var(--row-h); padding: 2px 4px; gap: 4px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
-.card { width: 58px; height: 48px; flex: 0 0 58px; border-radius: 5px; box-shadow: none; }
-.portrait { height: 32px; }
-.initials { font-size: 15px; }
+.desc h3 { margin: 0 0 2px; font-size: 11px; white-space: nowrap; }
+.desc p { margin: 0; font-size: 8.5px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tier-zone { height: var(--row-h); min-height: var(--row-h); padding: 3px 5px; gap: 4px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
+.tier-zone .card { width: 58px; height: calc(var(--row-h) - 6px); flex: 0 0 58px; border-radius: 5px; box-shadow: none; }
+.tier-zone .portrait { height: calc(var(--row-h) - 21px); min-height: 25px; }
 .card-name { min-height: 14px; height: 14px; padding: 1px 2px; font-size: 7px; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.initials { font-size: 15px; }
 .photo-btn { width: 17px; height: 17px; right: 2px; top: 2px; font-size: 10px; }
 .disclaimer { font-size: 8px; margin: 3px 0; }
-body.stream { overflow-y: auto; }
-body.stream .board { overflow: visible; }
-body.stream .tier { --row-h: 52px; }
+
+body.stream main { display: block; height: auto; padding: 7px 12px; }
+body.stream .board-wrap { width: 100%; }
+body.stream .tier { --row-h: clamp(48px, calc((100vh - 50px) / 17), 60px); }
