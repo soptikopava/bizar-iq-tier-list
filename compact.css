@@ -50,6 +50,11 @@ main {
 .tier { height: var(--row-h); min-height: var(--row-h); }
 .iq-number { font-size: 22px; }
 .iq-number small { font-size: 8px; }
+.iq-cell::before { opacity: .88; background: linear-gradient(135deg, var(--tier), color-mix(in srgb, var(--tier), white 24%)); }
+.iq-cell { border-right-color: color-mix(in srgb, var(--tier), white 28%); }
+.iq-number { color: #fff; text-shadow: 0 2px 5px #000b; }
+.iq-number small { color: #fff; text-shadow: 0 1px 3px #000c; }
+.tier { box-shadow: inset 3px 0 0 var(--tier); }
 .desc { padding: 3px 10px; overflow: hidden; }
 .desc h3 { margin: 0 0 2px; font-size: 11px; white-space: nowrap; }
 .desc p { margin: 0; font-size: 8.5px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
