@@ -3,11 +3,12 @@
 body { min-width: 1100px; overflow: hidden; }
 .topbar { height: 58px; padding: 0 22px; }
 .brand { gap: 10px; }
-.brand-mark { width: 38px; height: 38px; font-size: 17px; box-shadow: 3px 3px 0 #596b19; }
-.brand h1 { font-size: 18px; white-space: nowrap; }
-.brand p { font-size: 9px; }
+.brand-mark { width: 42px; height: 42px; font-size: 24px; box-shadow: 3px 3px 0 #596b19; }
+.brand h1 { font-size: 28px; white-space: nowrap; }
+.brand p { font-size: 12px; }
 .search, .ghost, .danger { height: 34px; }
-.ghost, .danger { padding: 7px 11px; font-size: 12px; }
+.search input { font-size: 16px; }
+.ghost, .danger { padding: 7px 11px; font-size: 16px; }
 
 main {
   max-width: 1920px;
@@ -22,9 +23,9 @@ main {
 .board-wrap { grid-column: 1; grid-row: 1; width: 100%; min-width: 0; margin: 0; }
 .pool-wrap { grid-column: 2; grid-row: 1; width: 100%; min-width: 0; margin: 0; display: flex; flex-direction: column; }
 .section-title { min-height: 41px; margin: 0 0 5px; align-items: flex-end; }
-.section-title h2 { margin-top: 1px; font-size: 17px; }
-.eyebrow { font-size: 7px; letter-spacing: .11em; }
-.counter { font-size: 9px; max-width: 78px; text-align: right; }
+.section-title h2 { margin-top: 1px; font-size: 28px; }
+.eyebrow { font-size: 10px; letter-spacing: .11em; }
+.counter { font-size: 12px; max-width: 92px; text-align: right; }
 .pool {
   min-height: 0;
   height: auto;
@@ -40,31 +41,31 @@ main {
 }
 .pool .card { width: 100%; height: 76px; flex: 0 0 76px; display: grid; grid-template-columns: 76px minmax(0, 1fr); border-radius: 7px; box-shadow: none; }
 .pool .portrait { height: 75px; }
-.pool .card-name { height: 75px; padding: 0 10px; display: flex; justify-content: flex-start; font-size: 12px; text-align: left; }
+.pool .card-name { height: 75px; padding: 0 10px; display: flex; justify-content: flex-start; font-size: 18px; line-height: 1.1; text-align: left; white-space: normal; }
 
 .axis-note, .board-head { display: none; }
 .board { overflow: hidden; }
-.tier { grid-template-columns: 72px 560px minmax(320px, 1fr); }
+.tier { grid-template-columns: 82px 680px minmax(320px, 1fr); }
 .tier { height: var(--row-h); min-height: var(--row-h); }
-.iq-number { font-size: 22px; }
-.iq-number small { font-size: 8px; }
+.iq-number { font-size: 32px; }
+.iq-number small { font-size: 12px; }
 .iq-cell::before { opacity: .88; background: linear-gradient(135deg, var(--tier), color-mix(in srgb, var(--tier), white 24%)); }
 .iq-cell { border-right-color: color-mix(in srgb, var(--tier), white 28%); }
 .iq-number { color: #fff; text-shadow: 0 2px 5px #000b; }
 .iq-number small { color: #fff; text-shadow: 0 1px 3px #000c; }
 .tier { box-shadow: inset 3px 0 0 var(--tier); }
 .desc { padding: 3px 10px; overflow: hidden; }
-.desc h3 { margin: 0 0 2px; font-size: 11px; white-space: nowrap; }
-.desc p { margin: 0; font-size: 8.5px; line-height: 1.2; white-space: normal; overflow: visible; }
+.desc h3 { margin: 0 0 1px; font-size: 16px; line-height: 1.05; white-space: nowrap; }
+.desc p { margin: 0; font-size: 13px; line-height: 1.08; white-space: normal; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .tier-zone { height: var(--row-h); min-height: var(--row-h); padding: 3px 5px; gap: 4px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
-.tier-zone .card { width: 104px; height: calc(var(--row-h) - 6px); flex: 0 0 104px; border-radius: 6px; box-shadow: none; display: grid; grid-template-columns: calc(var(--row-h) - 7px) minmax(0, 1fr); }
+.tier-zone .card { width: 170px; height: calc(var(--row-h) - 6px); flex: 0 0 170px; border-radius: 6px; box-shadow: none; display: grid; grid-template-columns: calc(var(--row-h) - 7px) minmax(0, 1fr); }
 .tier-zone .portrait { height: calc(var(--row-h) - 21px); min-height: 25px; }
 .tier-zone .portrait { height: calc(var(--row-h) - 7px); }
-.tier-zone .card-name { height: calc(var(--row-h) - 7px); min-height: 0; padding: 0 4px; display: flex; font-size: 7px; white-space: normal; }
+.tier-zone .card-name { height: calc(var(--row-h) - 7px); min-height: 0; padding: 0 8px; display: flex; justify-content: flex-start; text-align: left; font-size: 14px; line-height: 1.05; white-space: normal; }
 .card-name { min-height: 14px; height: 14px; padding: 1px 2px; font-size: 7px; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-.initials { font-size: 15px; }
+.initials { font-size: 24px; }
 .photo-btn { width: 17px; height: 17px; right: 2px; top: 2px; font-size: 10px; }
-.disclaimer { font-size: 8px; margin: 3px 0; }
+.disclaimer { font-size: 11px; margin: 3px 0; }
 
 body.stream main { display: block; height: auto; padding: 7px 12px; }
 body.stream .board-wrap { width: 100%; }
